@@ -1,0 +1,41 @@
+#new-nav-bar{
+    height: 10px;
+}
+:host {
+    
+    .navbar {
+        .nav-item > a {
+            color: rgb(131, 131, 131);
+            &:hover {
+                color: rgb(97, 97, 97);
+            }
+        }
+    }
+    .messages {
+        width: 300px;
+        .media {
+            border-bottom: 1px solid #ddd;
+            padding: 5px 10px;
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+        .media-body {
+            h5 {
+                font-size: 13px;
+                font-weight: 600;
+            }
+            .small {
+                margin: 0;
+            }
+            .last {
+                font-size: 12px;
+                margin: 0;
+            }
+        }
+    }
+}
+#menu-language{
+    right: 0px;
+    left: auto !important;
+}

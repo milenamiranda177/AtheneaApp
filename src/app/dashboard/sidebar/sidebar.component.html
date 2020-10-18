@@ -1,0 +1,28 @@
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
+    <div class="list-group">
+        <!--<a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-dashboard"></i>&nbsp;
+            <span>{{ 'MENU.DASHBOARD' | translate }}</span>
+        </a>-->
+        <a routerLink="/HistoricAccount" [routerLinkActive]="['router-link-active']" class="list-group-item" (click)="addExpandClass('pages')" [hidden]="isHidden('historico_usuario')">
+            <i class="fa fa-plus"></i>&nbsp;
+            <span>Clientes</span>
+            <!--<span>Cuentas</span>-->
+        </a>
+        <a [routerLink]="['/Login']" [routerLinkActive]="['router-link-active']" class="list-group-item" [hidden]="isHidden('historico_cuentas')">
+            <i class="fa fa-fw fa-desktop"></i>&nbsp;
+            <span>Cuentas</span>
+            <!--<span>Usuarios</span>-->
+        </a>
+        <a [routerLink]="['/Reportes']" [routerLinkActive]="['router-link-active']" class="list-group-item" [hidden]="isHidden('reportes')">
+            <i class="fa fa-fw fa-desktop"></i>&nbsp;
+            <span>Reportes</span>
+            <!--<span>Usuarios</span>-->
+        </a>
+        <a routerLink="/HistoricProduct/{{idUser}}" [routerLinkActive]="['router-link-active']" class="list-group-item" [hidden]="isHidden('registrar_producto')">
+            <i class="fa fa-fw fa-desktop"></i>&nbsp;
+            <span>Productos</span>
+            <!--<span>Usuarios</span>-->
+        </a>
+    </div>
+</nav>

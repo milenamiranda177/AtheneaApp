@@ -1,0 +1,138 @@
+<section class="section-header">
+  <div class="row">
+    <div class="col-md-6">
+      <h4> Nuevo usuario </h4>
+    </div>
+    <div class="col-md-6">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb float-md-right" style="background: transparent;">
+          <li class="breadcrumb-item">Inicio</li>
+          <li class="breadcrumb-item">Administración de usuarios</li>
+          <li class="breadcrumb-item active">Nuevo usuario</li>
+        </ol>
+      </nav>      
+    </div>
+  </div>
+</section>
+
+<section class="section-content">
+  <div class="card">
+<div class="card-header" style="padding-right: 0px">
+  <div class="container-fluid" style="padding-right: 0px">
+      <div class="col-md-1" style="float:right; padding-right: 0px">
+         <button class="ui-button-secondary arrow-back" style="float:right; background-color: #cecccc;" pButton label="{{'ADMIN_ACCOUNT.BACK'|translate}}" [routerLink]="['/Login']"></button>
+      </div>
+  </div>
+
+</div>
+    <div class="card-body">
+
+      <form [formGroup]="loginForm">
+        <input formControlName="loginadm_id" id="loginadm_id" hidden name="loginadm_id" type="text" size="30" [(ngModel)]="loginadm_id" pInputText>
+        <!-- Datos personales -->
+        <div class="card">
+          <div class="card-header">
+              Datos personales
+          </div>
+          <div class="card-body">
+            <div class="form-row">
+              <div class="form-group col-md-3" *ngIf="hideFieldsCustomer()">
+                <label>{{'ADMIN_LOGIN.PERSON'|translate}}</label>                    
+                <p-dropdown class="form-control-sm" name="loginadm_persons" formControlName="loginadm_persons" [options]="list_people" dataKey="mastName" [(ngModel)]="loginadm_persons" filter="true" (onChange)="selectPerson($event)" [style]="{'width':'100%'}">
+                  <ng-template let-person pTemplate="person">
+                    <div style="position: relative;height: 25px;">
+                      <div style="font-size:14px;float:left;margin-top:4px">{{person.label}}</div>
+                    </div>
+                  </ng-template>
+                </p-dropdown>
+              </div>
+              <div class="form-group col-md-3">
+                <label>{{'ADMIN_LOGIN.NAME'|translate}}</label>
+                <input required class="form-control form-control-sm" maxlength="99" formControlName="loginadm_name" id="loginadm_name" name="loginadm_name" type="text" size="30" [(ngModel)]="loginadm_name" pInputText>          
+              </div>
+              <div class="form-group col-md-3">
+                <label>{{'ADMIN_LOGIN.IDENTIFICATION'|translate}}</label>
+                <input required class="form-control form-control-sm" maxlength="20" formControlName="loginadm_identification" id="loginadm_identification" name="loginadm_identification" type="text" size="30" [(ngModel)]="loginadm_identification" pInputText>
+              </div>
+              <div class="form-group col-md-3">
+                <label>{{'ADMIN_LOGIN.DOC'|translate}}</label>
+                <select required class="form-control form-control-sm" formControlName="loginadm_docs" id="loginadm_docs" name="loginadm_docs" [(ngModel)]="loginadm_docs" pInputText>
+                  <option [ngValue]="null">{{'ADMIN_LOGIN.SELECT'|translate}}</option>
+                  <option *ngFor="let doc of docs_data" value="{{doc.pkDocuId}}">{{doc.docuName}} </option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>  
+
+        <!-- Acceso a la plataforma -->
+        <div class="card mt-3">
+          <div class="card-header">
+            Acceso a la plataforma
+          </div>
+          <div class="card-body">
+            <div class="form-row">
+              <div class="form-group col-md-3" *ngIf="hideFieldsCustomer()">
+                <label>{{'ADMIN_LOGIN.ROLE'|translate}}</label>
+                <select required class="form-control form-control-sm" formControlName="loginadm_role" id="loginadm_role" name="loginadm_role" [(ngModel)]="loginadm_role" (change)="onSelectRole($event.target.value)" >
+                  <option [ngValue]="null">{{'ADMIN_LOGIN.SELECT'|translate}}</option>
+                  <option *ngFor="let role of roles_data" value="{{role.pkRoleId}}">{{role.roleName}} </option>
+                </select>
+              </div>
+              <div class="form-group col-md-3" *ngIf="hideFieldsCustomer()">
+                <label>{{'ADMIN_LOGIN.ACCOUNT'|translate}}</label>
+                <select class="form-control form-control-sm" formControlName="loginadm_account" id="loginadm_account" name="loginadm_account" [(ngModel)]="loginadm_account">
+                  <option [ngValue]="null">{{'ADMIN_LOGIN.SELECT'|translate}}</option>
+                  <option *ngFor="let account of accounts" value="{{account.fkMastId}}">{{account.mastName}} </option>
+                </select>
+              </div>
+              <div class="form-group col-md-3">
+                <label>{{'ADMIN_LOGIN.UTC'|translate}}</label>
+                <select required class="form-control form-control-sm" formControlName="loginadm_utc" id="loginadm_utc" name="loginadm_utc" [(ngModel)]="loginadm_utc">
+                  <option [ngValue]="null">{{'ADMIN_LOGIN.SELECT'|translate}}</option>
+                  <option *ngFor="let utc of utcs_data" value="{{utc.pkUtcId}}">{{utc.utcNameUtc}} </option>
+                </select>
+              </div>
+              <div class="form-group col-md-3">
+                <label>{{'ADMIN_LOGIN.EMAIL'|translate}}</label>
+                <input required class="form-control form-control-sm" maxlength="50" formControlName="loginadm_email" id="loginadm_email" name="loginadm_email" type="text" size="30"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [(ngModel)]="loginadm_email">
+                <div *ngIf="loginForm.controls['loginadm_email'].errors && loginForm.controls['loginadm_email'].errors.emailTaken">
+                  😢 {{'ADMIN_LOGIN.EXISTING_EMAIL'|translate}}
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-3">
+                <label>{{'ADMIN_LOGIN.LOGIN'|translate}}</label>
+                <input required class="form-control form-control-sm" maxlength="49" id="loginadm_login" formControlName="loginadm_login" name="loginadm_login" type="text" size="30" [(ngModel)]="loginadm_login">
+                <div *ngIf="loginForm.controls['loginadm_login'].errors && loginForm.controls['loginadm_login'].errors.loginTaken">
+                  😢 {{'ADMIN_LOGIN.EXISTING_USER'|translate}}
+                </div>
+              </div>
+              <div class="form-group col-md-3" [hidden]=true>
+                <input required class="form-control form-control-sm" id="loginadm_password_hidden_autocomplete"  name="loginadm_password_hidden_autocomplete" [(ngModel)]="loginadm_password" type="password" size="100"  >
+              </div>
+              <div class="form-group col-md-3" *ngIf="visiblePassword">
+                <label>{{'ADMIN_LOGIN.PASSWORD'|translate}}</label>
+                <input required class="form-control form-control-sm" maxlength="49" id="loginadm_password" formControlName="loginadm_password"  name="loginadm_password" [(ngModel)]="loginadm_password" type="password" size="100"  >
+              </div>
+              <div class="form-group col-md-3" *ngIf="visiblePassword">
+                <label>{{'ADMIN_LOGIN.CONFIRM_PASSWORD'|translate}}</label>
+                <input required class="form-control form-control-sm" maxlength="49" id="loginadm_password_again" formControlName="loginadm_password_again" name="loginadm_password_again" [(ngModel)]="loginadm_password_again" (ngModelChange)="validatePassword()" type="password" size="100">
+                <div *ngIf='validate_pass'>
+                😢 {{'ADMIN_LOGIN.PASS_NOT_MATCH'|translate}}
+                </div>
+              </div>
+              <div class="form-group col-md-3">
+                  <button pButton type="button" class="ui-button-secondary" style="margin-top: 25px" label="Cambiar contraseña" (click)="changePass()" *ngIf="loginForm.controls['loginadm_id'].value !== null && !visiblePassword"></button>
+                  <button pButton type="button" class="ui-button-secondary" style="margin-top: 25px" label="{{'ADMIN_ACCOUNT.SAVE_BUTTON'|translate}}" (click)="onSubmit()" [disabled]="!loginForm.valid" *ngIf="!hideButtonSave(loginForm.controls['loginadm_id'].value)"></button>
+                  <button pButton type="button" class="ui-button-secondary" style="margin-top: 25px" label="{{'ADMIN_ACCOUNT.BUTTON_UPDATE'|translate}}" (click)="onUpdate()" [disabled]="!loginForm.valid" *ngIf="hideButtonSave(loginForm.controls['loginadm_id'].value)"></button>
+              </div>
+            </div>  
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<p-toast position="bottom-center"></p-toast>

@@ -1,0 +1,141 @@
+/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/bootstrap";
+@import "spinner";
+@import "utils";
+@import "rtl";
+@import "responsive";
+
+@media print {
+    .breadcrumb {
+        display: none !important;
+    }
+}
+
+body{
+    font-size: 13px;
+  }
+  .ui-panelmenu .ui-panelmenu-header.ui-state-active, .ui-panelmenu .ui-panelmenu-header.ui-state-active a {
+    border-color: #8c8c8c;
+    background: darkgrey;
+  }
+
+  .space-rows{
+    margin-top: 20px;
+  }
+  .btn-sabe{
+    background: #6d973e !important;
+    border: none !important;
+    &:hover{
+      background: #557531 !important;
+      border: none !important;
+    }
+    &:active{
+      background: #557531 !important;
+      border: none !important;
+    }
+  }
+  .ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+  }
+  .ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+  }
+
+  div.ui-table > .ng-star-inserted > div.ui-paginator-bottom > span.ui-paginator-pages > a.ui-state-active {
+    background: #f44336 !important;
+  }
+
+  h4 {
+    color: #363636;
+}
+th, tr {
+    font-weight: normal !important;
+    font-size: 0.9em !important;
+}
+body {
+    background-color: #F5F5F6 !important;
+}
+.ui-state-highlight {
+    background-color: #f44336 !important;
+}
+.btn-enable {
+    background-color: #f44336 !important;
+}
+.btn-disable{
+    background-color: #efeff0 !important;
+}
+.card-header {
+    background-color: #fff !important;
+
+}
+.card-header button {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.break {
+    width: auto;
+    word-break: break-all;
+    white-space: normal;
+    word-wrap: normal;
+}
+.btn-dark {
+    color: #fff !important;
+    background-color: #343a40 !important;
+    border-color: #343a40 !important;
+}
+#btn-config-plates button {
+    width: 100%;
+    position: inherit;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+select:focus,
+.uneditable-input:focus {   
+  border-color: #f44336 !important;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #f44336 !important;
+  outline: 0 none !important;
+}
+div.ui-table-caption > input {
+  max-width: 90% !important;
+}
+.arrow-back{
+  position: relative;
+  right: 0px;
+  background-color: #cecccc;
+  transition: background-color 0.2s;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 0%;
+  &:before {
+      content: '';
+      position: absolute;
+      border-top: 16px solid transparent;
+      border-bottom: 16px solid transparent;
+      border-right: 10px solid #cecccc;
+      left: -10px;
+      transition: background-color 0.2s;
+    }
+  &:hover {
+      background-color: #7d7d7d !important;
+      color: #cecccc;
+      &:before {
+          content: '';
+          border-right: 10px solid #7d7d7d;
+          transition: background-color 0.2s
+      }
+  }
+}

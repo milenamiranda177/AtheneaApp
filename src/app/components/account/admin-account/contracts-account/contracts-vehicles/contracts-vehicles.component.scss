@@ -1,0 +1,74 @@
+
+
+//botones
+
+.ui-button-black{
+
+    color: #fff;
+    background-color: #495057!important;
+    border: 1px solid #000;
+  
+  }
+  
+  .ui-button-danger {
+  
+    color: #fff;
+    background-color: #e31b23!important;
+    border: 1px solid #e31b23;
+  }
+
+  .btn2-active{
+
+   background-color: #fff;
+  
+    }
+  
+   .btn2-active:hover{
+    color: #e31a23 !important;
+    border: solid 1px #e31a23;
+    
+  }
+
+  .btn-active{
+  border:solid 2px #ced4da;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  padding:12px;
+
+  }
+
+  .btn-active:hover{
+   border:solid 2px #e31a23;
+   padding:12px;
+   color:#e31a23;
+  
+  }
+
+    .btn2 {
+      background-color: #fff;
+      color:#000;
+      margin-left: 57px;
+      border: solid 1px #000;
+      padding: 10px;
+      cursor:pointer;
+      }
+
+    .btn2:hover{
+    background-color: #e31b23;
+    color:#fff;
+    border:solid 1px #a94442;
+    }
+
+    button{
+
+      background-color: #fff;
+    }
+
+    .lineas{
+      border: solid 1px #ced4da;
+      padding: 5px;
+      margin: 0px; 
+      background-color:#D9D9D9;
+
+    }
+

@@ -1,0 +1,36 @@
+.btn-sabe{
+  background: #6d973e;
+  border: none;
+  &:hover{
+    background: #557531 !important;
+    border: none !important;
+  }
+  &:active{
+    background: #557531 !important;
+    border: none !important;
+  }
+}
+.space-rows{
+  margin-top: 20px;
+}
+#ctnInfoContrato{
+  border-top: 1px solid black;
+  margin-top: 45px;
+}
+
+//botones
+
+.ui-button-black{
+
+  color: #fff;
+  background-color: #495057!important;
+  border: 1px solid #000;
+
+}
+
+.ui-button-danger {
+
+  color: #fff;
+  background-color: #e31b23!important;
+  border: 1px solid #e31b23;
+}
