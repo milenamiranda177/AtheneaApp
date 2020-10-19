@@ -1,0 +1,49 @@
+<div class="container">
+  <form [formGroup]="productForm">
+    <div class="row space-rows">
+      <h4>Solicitud De {{tipo}}</h4>
+      <input type="text" hidden class="form-control" formControlName="form_id" >
+      <br>
+      <div class="input-group mb-3" *ngIf="tarjetaCredito">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon3">Valor Aprobado</span>
+        </div>
+        <input type="number" class="form-control" formControlName="form_aproved" readonly>
+      </div>
+      <br>
+
+      <div class="input-group mb-3" *ngIf="fondoInversion">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon3">Valor a Invertir</span>
+        </div>
+        <input type="number" class="form-control" formControlName="form_valor" [(ngModel)]="valor">
+      </div>
+
+      <div class="input-group mb-3" *ngIf="cuentaCorriente">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon3">Valor Inicial</span>
+        </div>
+        <input type="number" class="form-control" formControlName="form_valor" [(ngModel)]="valor" >
+      </div>
+
+      <div class="input-group mb-3" *ngIf="cuentaAhorro">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon3">Valor Inicial</span>
+        </div>
+        <input type="number" class="form-control" formControlName="form_valor" [(ngModel)]="valor">
+      </div>
+
+      <div class="input-group mb-3">
+        <button pButton type="button" class="btn" label="Guardar"
+          (click)="onSaveProduct()" [disabled]="!productForm.valid"></button>
+
+      </div>
+
+      <div class="input-group mb-3">
+        <button pButton type="button" class="btn" label="Atrás" [routerLink]="['/AdminProduct']"></button>
+      </div>
+
+    </div>
+  </form>
+</div>
+<p-toast position="bottom-center"></p-toast>

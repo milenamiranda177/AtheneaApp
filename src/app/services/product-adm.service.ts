@@ -13,12 +13,13 @@ export class ProductService {
 
   private userId = null;
 
+
   private handleError: HandleError;
   constructor(private http: HttpClient, private session: Session, httpErrorHandler: HttpErrorHandler) {
     this.handleError = httpErrorHandler.createHandleError('ProductService');
   }
   
-  
+  //Traer productos por usuario
   getProducts(idUser): Observable<HistoricData[]> {
     const url = this.session.apiUrl + 'core/products/' + idUser;
     return this.http.get<HistoricData[]>(url, { headers: this.session.getAuthHeaders()}).pipe(
@@ -26,20 +27,18 @@ export class ProductService {
       );
   }
 
-
-  // Actualizar Cuenta
-  updateDataAccount(JSONAccount, pkVwlaId): Observable<null> {
-    const url = this.session.apiUrl + 'accounts/' + pkVwlaId;
-    return this.http.put(url, JSONAccount, {headers: this.session.getAuthHeaders()}).pipe(
-      catchError(this.handleError<any>('UpdateDataAccount', null))
+  //Crear Producto
+  saveProduct(JSONProduct): Observable<null> {
+    const url = this.session.apiUrl + 'core/products/';
+    return this.http.post(url, JSONProduct, {headers: this.session.getAuthHeaders()}).pipe(
+      catchError(this.handleError<any>('ProductoCreado', null))
     );
   }
 
-  // Actualizar Estado de la cuenta
-  updateStatusAccount(pkVwlaId, mastStatus): Observable<null> {
-    const url = this.session.apiUrl + 'accounts/' + pkVwlaId + '/status/' + mastStatus;
-    return this.http.put(url, '{}', {headers: this.session.getAuthHeaders()}).pipe(
-      catchError(this.handleError<any>('UpdateStatusAccount', null))
+  deleteProduct(productId): Observable<null> {
+    const url = this.session.apiUrl + 'core/products/' + productId;
+    return this.http.delete(url, productId).pipe(
+      catchError(this.handleError<any>('ProductoEliminado', null))
     );
   }
 

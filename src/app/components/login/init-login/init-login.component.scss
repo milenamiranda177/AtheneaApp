@@ -3,7 +3,7 @@
   border-radius: 0;
   position: fixed;
   z-index: 1000;
-  top: 0px;
+  top: 100px;
   left: 235px;
   width: 500px;
   height: 100vh;
@@ -17,17 +17,15 @@
   overflow-x: hidden;
   padding-bottom: 40px;
 }
-.ui-button-black{
-
-    color: #fff;
-    background-color: #495057!important;
-    border: 1px solid #000;
-  
+.btn{
+  background: #6d973e;
+  border: none;
+  &:hover{
+    background: #557531 !important;
+    border: none !important;
   }
-  
-  .ui-button-danger {
-  
-    color: #fff;
-    background-color: #e31b23!important;
-    border: 1px solid #e31b23;
+  &:active{
+    background: #557531 !important;
+    border: none !important;
   }
+}

@@ -11,7 +11,7 @@ export class Session {
  apiUrl = location.protocol + '//' + location.hostname + ':8080/athenea/restapi/';
  getAuthHeaders() {
    // this.token = '14df43652ba669d69637a854778f';
-   return new HttpHeaders().append('Authorization', 'Basic ' + btoa(this.token)).append('Content-Type', 'application/json');
+   return new HttpHeaders().set('authorization', 'Bearer ' + btoa(this.token));
  }
  getAuthHeadersSimple() {
   // this.token = '14df43652ba669d69637a854778f';

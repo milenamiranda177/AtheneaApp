@@ -1,0 +1,28 @@
+<h2>Solicitud de Productos</h2>
+
+<span>Seleccione Uno</span>
+
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
+  <div >
+      <a [routerLink]="['/TipoProduct']" [queryParams]="{tipo: 'cuenta_corriente'}" queryParamsHandling="merge" class="list-group-item" >
+          <i class="fa fa-plus"></i>&nbsp;
+          <span>Cuenta de Corriente</span>
+          <!--<span>Cuentas</span>-->
+      </a>
+      <a [routerLink]="['/TipoProduct']"  [queryParams]="{tipo: 'cuenta_ahorro'}" queryParamsHandling="merge" class="list-group-item">
+          <i class="fa fa-plus"></i>&nbsp;
+          <span>Cuenta de Ahorro</span>
+          <!--<span>Usuarios</span>-->
+      </a>
+      <a [routerLink]="['/TipoProduct']"  [queryParams]="{tipo: 'tarjeta_credito'}" queryParamsHandling="merge" class="list-group-item">
+          <i class="fa fa-plus"></i>&nbsp;
+          <span>Tarjeta de Crédito</span>
+          <!--<span>Usuarios</span>-->
+      </a>
+      <a [routerLink]="['/TipoProduct']"  [queryParams]="{tipo: 'fondo_inversion'}" queryParamsHandling="merge" class="list-group-item">
+          <i class="fa fa-plus"></i>&nbsp;
+          <span>Fondo de Inversión</span>
+          <!--<span>Usuarios</span>-->
+      </a>
+  </div>
+</nav>

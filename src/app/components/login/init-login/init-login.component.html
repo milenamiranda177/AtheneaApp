@@ -2,7 +2,6 @@
 <section class="section-header">
   <div class="row">
     <div class="col-md-6">
-      <h4> Login </h4>
     </div>
   </div>
 </section>
@@ -23,7 +22,7 @@
       <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon3">Identificacion</span>
         </div>
-      <input type="text" class="form-control" formControlName="form_identificacion" placeholder="Identificacion" aria-label="Identificacion" [(ngModel)]="identificacion">
+      <input type="text" required class="form-control" formControlName="form_identificacion" placeholder="Identificacion" aria-label="Identificacion" [(ngModel)]="identificacion">
   </div>
 
   <div class="input-group mb-3">
@@ -34,7 +33,7 @@
   </div>
 
   <div class="input-group mb-3">
-      <button pButton type="button" class="ui-button-secondary" style="margin-top: 25px" label="Iniciar Sesión" (click)="onSubmit()" [disabled]="!sessionForm.valid" ></button>
+      <button pButton type="button" class="btn" style="margin-top: 25px" label="Iniciar Sesión" (click)="onSubmit()" [disabled]="!sessionForm.valid" ></button>
      
   </div>
 

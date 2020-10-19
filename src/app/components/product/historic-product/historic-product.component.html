@@ -17,7 +17,7 @@
 <section class="section-content">
     <div class="card">
         <div class="card-header">
-            <button pButton type="button" label="Nuevo Producto" class="ui-button-secondary" routerLink="/AdminProduct" [queryParams]="{account:''}"></button>    
+            <button pButton type="button" label="Nuevo Producto" class="btn" routerLink="/AdminProduct"></button>    
         </div>
         <div class="card-body">
             <p-table #table [tableStyle]="{'table-layout':'auto'}" [resizableColumns]="true" [value]="filteredList" [columns]="cols" [paginator]="true" [rows]="5">
@@ -26,12 +26,8 @@
                     <input type="text"  pInputText size="50" maxlength="30" placeholder="Buscar" [(ngModel)]="filterText" (ngModelChange)="filter()" style="width:auto">
                     <p style="position:absolute; top:10px; right: 50px; color:#333; font-weight: 500">Ayuda</p><i style="background-color:#0470B0!important;" class="fas fa-info help-tip">
                     <p>
-                        <i class="fas fa-ban"></i> &nbsp;&nbsp;Deshabilitar Producto
-                        <br>
-                        <br>
-                        <i class="fas fa-check-circle"></i> &nbsp; Habilitar Producto
-                        <br>
-                        <br>
+                        <i class="fas fa-pencil-alt"></i> &nbsp;&nbsp;Editar Producto
+                        <i class="fas fa-ban"></i> &nbsp;&nbsp;Eliminar Producto
                     </p>
                     </i>
                 </ng-template> 
@@ -41,12 +37,12 @@
                             {{col.header|translate}}
                             <p-sortIcon [field]="col.field"></p-sortIcon>
                         </th>
-                        <th style="word-wrap: break-word; text-align:center;width: 170px">{{'ADMIN_ACCOUNT.ACTION_TABLE'|translate}}</th>
+                        <th style="word-wrap: break-word; text-align:center;width: 170px">Acciones</th>
                     </tr>
                 </ng-template> 
                 <ng-template pTemplate="body" let-rowData let-columns="columns" let-data>
                     <tr style="z-index: 1000!important">
-                        <td style="word-wrap: break-word" *ngFor="let col of cols" [hidden]="col.field === 'vhclNumberPlate'">
+                        <td style="word-wrap: break-word" *ngFor="let col of cols" >
                             <ng-container
                                 *ngIf="col.type === 'date'; then colDate; else colText">
                             </ng-container>
@@ -58,10 +54,8 @@
                             </ng-template>
                         </td>
                         <td >
-                            <div style="display: flex; justify-content: center;"  class="mx-auto">
-                            <button pButton type="button" style="margin-right:3%;" icon="fas fa-check-circle"   class="btn ui-button-black btn-enable" *ngIf="data.mastStatus === false" (click)="bindinAccion(data.pkMapeId, data.mastStatus)" data-toggle="modal" data-target="#HistoricModal"></button>
-                            <button pButton type="button" style="margin-right:3%;" icon="fas fa-ban" class="btn ui-button-danger btn-enable" *ngIf="data.mastStatus === true" (click)="bindinAccion(data.pkMapeId, data.mastStatus)" data-toggle="modal" data-target="#HistoricModal"></button>                        
-                            <button pButton type="button" style="margin-right:3%;" icon="fas fa-pencil-alt" class="btn ui-button-secondary btn-disable"  *ngIf="data.mastStatus === true" [routerLink]="['/AdminAccount']" [queryParams]="{account : data.json}"></button>
+                            <div style="display: flex; justify-content: center;"  class="mx-auto"><button pButton type="button" style="margin-right:3%;" icon="fas fa-ban" class="btn ui-button-danger btn-enable"  (click)="bindinAccion(data.productId)" data-toggle="modal" data-target="#HistoricModal"></button>                        
+                            <button pButton type="button" style="margin-right:3%;" icon="fas fa-pencil-alt" class="btn ui-button-secondary btn-disable"  [routerLink]="['/TipoProduct']" [queryParams]="{tipo : data.typeProduct, valor:data.valor, id:data.productId}"></button>
                             </div>
                         </td>
                     </tr>
@@ -71,26 +65,4 @@
     </div>
 </section>
 
-<!-- Modal de confirmación ON-->
-<div class="modal fade" id="HistoricModal" tabindex="-1" role="dialog" aria-labelledby="HistoricModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="HistoricModalLabel">{{'ADMIN_ACCOUNT.DEL_MSSG_ENADIS1'|translate}}</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            {{'ADMIN_ACCOUNT.DEL_MSSG_ENADIS2'|translate}}
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-block btn-lg ui-button-secondary btn-disable" style="padding-bottom: 0;padding-top: 0;margin-top: 1%;max-width: 130px; font-size: 14px!important" data-dismiss="modal">{{'ADMIN_ACCOUNT.CANCEL'|translate}}</button>
-            <button type="button" class="btn btn-block btn-lg ui-button-danger btn-enable" style="padding-bottom: 0;padding-top: 0;margin-top: 1%;max-width: 130px;color: white; font-size: 14px!important" data-dismiss="modal" (click)="actStatusAccount(tempId,tempStatus)">{{'ADMIN_ACCOUNT.ACCEPT'|translate}}</button>
-        </div>
-        </div>
-    </div>
-    <p-toast position="bottom-center"></p-toast>
-</div>
-<!-- Modal de confirmación OFF-->
 <p-toast position="bottom-center"></p-toast>

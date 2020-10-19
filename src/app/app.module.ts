@@ -60,7 +60,8 @@ import { HistoricLoginComponent } from './components/login/historic-login/histor
 import { AdminLoginComponent } from './components/login/admin-login/admin-login.component';
 import { InitLogin } from './components/login/init-login/init-login.component';
 import { HistoricProduct } from './components/product/historic-product/historic-product.component';
-
+import { AdminProduct } from './components/product/admin-product/admin-product.component';
+import { TipoProduct } from './components/product/tipo-product/tipo-product.component';
 
 
 @NgModule({
@@ -79,7 +80,9 @@ import { HistoricProduct } from './components/product/historic-product/historic-
     AdminLoginComponent,
     ContractsVehiclesComponent,
     InitLogin,
-    HistoricProduct
+    HistoricProduct,
+    AdminProduct,
+    TipoProduct
   ],
   imports: [
     BrowserModule,

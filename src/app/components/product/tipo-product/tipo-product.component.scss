@@ -1,3 +1,8 @@
+.space-rows{
+  margin-top: 20px;
+}
+
+
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
 a,
@@ -53,6 +58,7 @@ a:visited:hover {
   /*content: "\f129";*/
   font-weight: 900;
   color: #fff;
+  margin: 0px 0px 0px 1px;
 
 }
 
@@ -64,8 +70,8 @@ a:visited:hover {
   padding: 20px;
   width: 210px;
   position: absolute;
-  top:-135px;
-  left:-178px;
+  top:-105px;
+  left:-180px;
   border-radius: 4px;
   right: -4px;
   color: #fff;
@@ -92,7 +98,7 @@ a:visited:hover {
   border: 9px solid transparent;
   border-top-color:#0470B0;
   right: 10px;
-  top: 120px;
+  top: 86px;
 }
 
 .help-tip p:after {
@@ -114,12 +120,11 @@ a:visited:hover {
   text-decoration: underline;
 }
 
-
 .fa, .fas {
   font-weight: 600!important;
 }
 
-
+//botones
 
 .btn{
   background: #6d973e;

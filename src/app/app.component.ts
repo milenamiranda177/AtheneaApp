@@ -15,29 +15,16 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'Aprovisionamiento';
+  title = 'AtheneaApp';
   items: MenuItem[];
   collapedSideBar: boolean;
 
   paramsSubscription: Subscription;
   constructor(private translate: TranslateService, private contextService: ContextService, public session: Session,
     public route:  ActivatedRoute) {
-        translate.setDefaultLang('es');
   }
   public ngOnInit() {
-    /*this.paramsSubscription = this.route.queryParams.subscribe(params => {
-        if (typeof(params['token']) !== 'undefined') {
-            this.session.token = params['token'];
-            this.paramsSubscription.unsubscribe();
-            this.contextService.loadContext().toPromise().then(data => {
-                if (data == null) {
-                  alert('Sesión expirada');
-                }
-                this.session.master = data;
-                console.log(data);
-            });
-        }
-    });*/
+    
     this.items = [
             {
                 label: 'Cuentas',
