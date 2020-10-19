@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TabMenuModule} from 'primeng/tabmenu';
 import {MenuItem} from 'primeng/api';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AccountService } from '../../../services/account-adm.service';
 import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/filter';
 

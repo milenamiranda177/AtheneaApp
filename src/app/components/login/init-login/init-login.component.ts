@@ -35,7 +35,6 @@ export class InitLogin implements OnInit {
   ngOnInit() {
 
     this.tipos = [
-      {label:'Tipo de Documento', value:null},
       {label:'Cédula de ciudadania', value:'CC'},
       {label:'Cédula de Extranjeria', value:'CE'},
       {label:'Pasaporte', value:'PS'}
@@ -59,15 +58,27 @@ export class InitLogin implements OnInit {
       console.log(objectMaster);
       
       this.sessionService.saveDataLogin(objectMaster).subscribe((master) => {
-          this.session.master = master;
-          this.session.token = master.token.toString();
-          this.session.loadPermissions();
-          this.router.navigate(['/SideBar'], {queryParams: {token: this.session.token}});
-          this.sessionForm.reset();
-          this.isSession = true;
+          console.log(master);
+          if (master !== null){
+            this.session.master = master;
+            this.session.token = master.token.toString();
+            this.session.loadPermissions();
+            this.router.navigate(['/SideBar'], {queryParams: {token: this.session.token}});
+            this.sessionForm.reset();
+            this.isSession = true;
+          } else{
+            this.showError("No se encontró usuario");
+            this.sessionForm.reset();
+          }
+          
       },
       error => {
+        this.showError(error);
         });
+  }
+
+  showError(detail) {
+    this.messageService.add({severity: 'error', summary: "No se encontró usuario", detail: detail});
   }
 
 }
