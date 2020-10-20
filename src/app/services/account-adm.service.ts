@@ -4,10 +4,7 @@ import { catchError, retry} from 'rxjs/operators';
 import { HttpErrorHandler, HandleError } from './http-error-handler.service';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Session } from '../entities/Session';
-import { AccountAdm } from '../entities/Account';
-import { City } from '../entities/City';
 import { Master } from '../entities/Master';
-import { HistoricData } from '../entities/HistoricData';
 
 @Injectable({
   providedIn: 'root'

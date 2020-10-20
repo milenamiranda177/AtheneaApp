@@ -4,7 +4,6 @@ import { TableModule } from 'primeng/table';
 import {MessageService} from 'primeng/api';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AccountService } from '../../../services/account-adm.service';
-import { ExcelService } from '../../../services/helpers/excel-service';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslationWidth } from '@angular/common';
 import { Subscription } from 'rxjs';
@@ -34,7 +33,7 @@ export class HistoricAccountComponent implements OnInit {
     @ViewChild('table') table;
 
   constructor(public http: HttpClient, private accountService: AccountService, private messageService: MessageService,
-    private excelService: ExcelService, private translate: TranslateService, public router: Router, private route: ActivatedRoute,
+    private translate: TranslateService, public router: Router, private route: ActivatedRoute,
     public session: Session, private contextService: ContextService) { }
 
   ngOnInit() {

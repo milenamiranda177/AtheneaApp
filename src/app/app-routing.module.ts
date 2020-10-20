@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { AdminAccountComponent } from './components/account/admin-account/admin-account.component';
 import { HistoricAccountComponent } from './components/account/historic-account/historic-account.component';
 import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
 import { HistoricProduct } from './components/product/historic-product/historic-product.component';
