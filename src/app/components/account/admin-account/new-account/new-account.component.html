@@ -1,100 +1,53 @@
 <div class="container">
-  <h4>{{'ADMIN_ACCOUNT.ADM_ACC'|translate}}</h4>
+  <h4>Formulario Usuario</h4>
   <form [formGroup]="accountForm">
    <div class="row space-rows">
      <div class="col-md">
-       <p-radioButton id="radio_button" name="radio_button" [(ngModel)]="radio_button" formControlName="radio_button" value="true" label="{{'ADMIN_ACCOUNT.HEADLINE'|translate}}" inputId="preopt1" [hidden]="!changeTypeAccountAprov"></p-radioButton>
+       <p-radioButton id="radio_button" name="radio_button" [(ngModel)]="radio_button" formControlName="radio_button" value="ROLE_USER" label="Cliente" [hidden]="!roleAdmin"></p-radioButton>
      </div>
      <div class="col-md">
-           <p-radioButton id="radio_button" name="radio_button" [(ngModel)]="radio_button" formControlName="radio_button" value="false" label="{{'ADMIN_ACCOUNT.OPERATOR'|translate}}" inputId="preopt2" [hidden]="!changeTypeAccountAprov"></p-radioButton>
+           <p-radioButton id="radio_button" name="radio_button" [(ngModel)]="radio_button" formControlName="radio_button" value="ROLE_ADMIN" label="Admin"  [hidden]="!roleAdmin"></p-radioButton>
      </div>
-     <div class="col-md"></div>
+     
+     <div class="col-md">
+      <input class="form-control form-control-sm" name="accountadm_id" type="number" [(ngModel)]="accountadm_id" hidden formControlName="accountadm_id" pInputText >
+    </div>
    </div>
-
+   
   <div class="row space-rows">
     <div class="col-md">
-      <label>{{'ADMIN_ACCOUNT.NAME'|translate}}</label>
+      <label>Tipo de identificación</label>
+      <select required class="form-control" formControlName="form_tipo" id="tipo_documento" name="tipo_documento" [(ngModel)]="tipo" pInputText>
+        <option *ngFor="let ti of tipos" value="{{ti.value}}">{{ti.label}} </option>
+      </select> 
+    </div>
+    <div class="col-md">
+        <label>Identificacion</label>
+        <input class="form-control form-control-sm" name="accountadm_idNumber" [(ngModel)]="accountadm_idNumber" formControlName="accountadm_idNumber" maxlength="20" type="text" size="30" required>
+    </div>  
+    <div class="col-md">
+      <label>Nombre Completo</label>
       <input class="form-control form-control-sm" name="accountadm_name" type="email" size="30" [(ngModel)]="accountadm_name" formControlName="accountadm_name" pInputText maxlength="99" required>
     </div>
+  </div>
+
+  <div class="row space-rows">
     <div class="col-md">
-      <label>{{'ADMIN_ACCOUNT.EMAIL'|translate}}</label>
-      <input class="form-control form-control-sm" name="accountadm_email" type="text" size="30" [(ngModel)]="accountadm_email" (ngModelChange)="toLower()" formControlName="accountadm_email" maxlength="50" [email]="true" required>
-    </div>
-    <div class="col-md">
-      <label>{{'ADMIN_ACCOUNT.TYPE_PERSON'|translate}}</label>
-      <select class="form-control form-control-sm" name="accountadm_persons" [(ngModel)]="accountadm_persons" formControlName="accountadm_persons" required>
-        <option value="" disabled selected>{{'CHECK_LIST.SELECT_LABEL'|translate}}</option>
-        <option *ngFor="let person of persons_data" value="{{person.pkTypeId}}">{{person.typePerson}} </option>
-      </select>
+      <label for="">Teléfono</label>
+      <input class="form-control form-control-sm" name="accountadm_celNumber" [(ngModel)]="accountadm_celNumber" formControlName="accountadm_celNumber" type="number" size="30" min="1" pattern="^[0-9]+" required>
     </div>
   </div>
   <div class="row space-rows">
     <div class="col-md">
-      <label>{{'ADMIN_ACCOUNT.ID_TYPE'|translate}}</label>
-      <select class="form-control form-control-sm" name="accountadm_docs" [(ngModel)]="accountadm_docs" formControlName="accountadm_docs" required>
-        <option value="" disabled selected>{{'CHECK_LIST.SELECT_LABEL'|translate}}</option>
-        <option *ngFor="let doc of docs_data" value="{{doc.pkDocuId}}">{{doc.docuName}} </option>
-      </select>
-    </div>
-    <div class="col-md">
-      <label>{{'ADMIN_ACCOUNT.IDENTIFICATION_NUMBER'|translate}}</label>
-      <input class="form-control form-control-sm" name="accountadm_idNumber" [(ngModel)]="accountadm_idNumber" formControlName="accountadm_idNumber" maxlength="20" type="text" size="30" required>
-    </div>
-    <div class="col-md">
-      <label for="">{{'ADMIN_ACCOUNT.ADDRESS_LABEL'|translate}}</label>
-      <input class="form-control form-control-sm" name="accountadm_address" [(ngModel)]="accountadm_address" formControlName="accountadm_address" type="text" size="30" maxlength="50" required>
+      <label for="">Contraseña</label>
+      <input class="form-control form-control-sm" name="accountadm_password" [(ngModel)]="accountadm_password" formControlName="accountadm_password" type="password" size="30" min="6" required>
     </div>
   </div>
 
   <div class="row space-rows">
     <div class="col-md">
-      <label for="">{{'ADMIN_ACCOUNT.CODE_AREA'|translate}}</label>
-      <input class="form-control form-control-sm" name="accountadm_areacode" [(ngModel)]="accountadm_areacode" formControlName="accountadm_areacode" (ngModelChange)="validateLenght('accountadm_areacode',3)" type="number" size="3" min="1" pattern="^[0-9]+" required>
+      <button pButton type="button" class="btn" style="margin-top: 25px" label="Guardar" (click)="onSaveUser()" [disabled]="!accountForm.valid" ></button>
     </div>
-    <div class="col-md">
-      <label for="">{{'ADMIN_ACCOUNT.TELEPHONE_LABEL'|translate}}</label>
-      <input class="form-control form-control-sm" name="accountadm_telNumber" [(ngModel)]="accountadm_telNumber" formControlName="accountadm_telNumber" (ngModelChange)="validateLenght('accountadm_telNumber',11)" type="number" size="30" min="1" pattern="^[0-9]+" required>
-    </div>
-    <div class="col-md">
-      <label for="">{{'ADMIN_ACCOUNT.CELPHONE_LABEL'|translate}}</label>
-      <input class="form-control form-control-sm" name="accountadm_celNumber" [(ngModel)]="accountadm_celNumber" formControlName="accountadm_celNumber" (ngModelChange)="validateLenght('accountadm_celNumber',15)" type="number" size="30" min="1" pattern="^[0-9]+" required>
-    </div>
-  </div>
-
-  <div class="row space-rows">
-    <div class="col-md">
-      <label>{{'ADMIN_ACCOUNT.BIRTH_DATE'|translate}}</label>
-      <input class="form-control form-control-sm" name="accountadm_birthdate" [(ngModel)]="accountadm_birthdate" formControlName="accountadm_birthdate" type="date" required>
-    </div>
-    <div class="col-md">
-      <label>{{'ADMIN_ACCOUNT.DEPARTMENT_LABEL'|translate}}</label>
-      <select class="form-control form-control-sm" name="accountadm_states" [(ngModel)]="accountadm_states" formControlName="accountadm_states" (ngModelChange)="getCities()" required>
-        <option value="" disabled selected>{{'CHECK_LIST.SELECT_LABEL'|translate}}</option>
-        <option *ngFor="let state of states_data" value="{{state.pkStatId}}">{{state.statName}} </option>
-      </select>
-    </div>
-    <div class="col-md">
-      <label>{{'ADMIN_ACCOUNT.CITY'|translate}}</label>
-      <select class="form-control form-control-sm" name="accountadm_cities" [(ngModel)]="accountadm_cities" formControlName="accountadm_cities" required>
-        <option value="" disabled selected>{{'CHECK_LIST.SELECT_LABEL'|translate}}</option>
-        <option *ngFor="let city of cities_data" value="{{city.pkCityId}}">{{city.cityName}} </option>
-      </select>
-    </div>
-  </div>
-
-
-  <div class="row space-rows">
-    <div class="col-md">
-      <label>{{'ADMIN_ACCOUNT.UTC'|translate}}</label>
-      <select class="form-control form-control-sm" name="accountadm_utcs" [(ngModel)]="accountadm_utcs" formControlName="accountadm_utcs" required>
-        <option value="" disabled selected>{{'CHECK_LIST.SELECT_LABEL'|translate}}</option>
-        <option *ngFor="let utc of utcs_data" value="{{utc.pkUtcId}}">{{utc.utcNameUtc}} </option>
-      </select>
-    </div>
-    <div class="col-md">
-        <button pButton type="submit" class="ui-button-secondary" style="margin-top: 25px" label="{{'ADMIN_ACCOUNT.SAVE_BUTTON'|translate}}" (click)="actionAccount(pkMapeId)" [disabled]="!accountForm.valid"></button>
-    </div>
-    <div class="col-md"></div>
   </div>
 </form>
 </div>

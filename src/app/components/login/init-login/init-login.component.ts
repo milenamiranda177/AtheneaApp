@@ -52,7 +52,7 @@ export class InitLogin implements OnInit {
   onSubmit() {
       const values = this.sessionForm.value;
       const objectMaster = new Master();
-      objectMaster.identificacion = values.form_identificacion;
+      objectMaster.login = values.form_identificacion;
       objectMaster.tipoidentificacion = this.tipo;
       objectMaster.password = Md5.init(values.form_password);
       console.log(objectMaster);
@@ -76,6 +76,7 @@ export class InitLogin implements OnInit {
         this.showError(error);
         });
   }
+
 
   showError(detail) {
     this.messageService.add({severity: 'error', summary: "No se encontró usuario", detail: detail});

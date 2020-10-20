@@ -16,7 +16,6 @@ import { Subscription } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   title = 'AtheneaApp';
-  items: MenuItem[];
   collapedSideBar: boolean;
 
   paramsSubscription: Subscription;
@@ -25,44 +24,6 @@ export class AppComponent implements OnInit {
   }
   public ngOnInit() {
     
-    this.items = [
-            {
-                label: 'Cuentas',
-                items: [
-                    {label: 'Administrar cuentas', routerLink: 'AdminAccount'},
-                    {label: 'Histórico de cuentas', routerLink: 'HistoricAccount'}
-                ]
-            },
-            {
-                label: 'Perfiles',
-                items: [
-                    {label: 'Administrar perfiles'},
-                    {label: 'Histórico de perfiles'}
-                ]
-            },
-            {
-                label: 'Usuarios',
-                items: [
-                    {label: 'Administrar usuarios'},
-                    {label: 'Histórico de usuarios'}
-                ]
-            },
-            {
-                label: 'Compartir vehículos',
-                items: [
-                    {label: 'A sub-cuentas'},
-                    {label: 'A cuentas CGS'},
-                    {label: 'Histórico de compartidos'}
-                ]
-            },
-            {
-                label: 'Configuración de Pánicos',
-                items: [
-                    {label: 'Actualizar Configuración de Pánicos'},
-                    {label: 'Histórico de Configuración de Pánicos'},                    
-                ]
-            }
-        ];
   }
   receiveCollapsed($event) {
     this.collapedSideBar = $event;

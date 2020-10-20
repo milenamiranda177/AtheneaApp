@@ -16,7 +16,8 @@ import { HttpClient } from '@angular/common/http';
 export class SidebarComponent {
     paramsSubscription: Subscription;
     public jsonPermission;
-    public idUser;
+    public idUser = null;
+    public logoutTab=true;
 
 
     @Output() collapsedEvent = new EventEmitter<boolean>();
@@ -32,24 +33,29 @@ export class SidebarComponent {
         console.log("carga")
         this.paramsSubscription = this.route.queryParams.subscribe(params => {
             if (typeof(params['token']) !== 'undefined') {
-                console.log("AQUI ENTRA")
-                console.log(this.session.master);
                 this.session.token = params['token'];
                 this.idUser = this.session.master.id;
-                console.log("ID USER");
-                console.log(this.idUser);
+                this.logoutTab = false;
                 this.jsonPermission = this.session.permissions;
-                console.log(this.jsonPermission);
             }
         });
 
     }
 
     isHidden(module) {
-        if (this.jsonPermission !== undefined && this.jsonPermission[module] !== undefined) {
-            return !this.jsonPermission[module];
+        if (this.session.permissions !== undefined && this.session.permissions[module] !== undefined) {
+            return !this.session.permissions[module];
         } else {
             return true;
         }
+    }
+
+    logout(){
+        this.session.token = null;
+        this.session.master = null;
+        this.session.permissions = JSON.parse(this.session.DEFAULT);
+        this.idUser = null;
+        this.logoutTab = true;
+        this.router.navigate(['/dashboard']);
     }
 }

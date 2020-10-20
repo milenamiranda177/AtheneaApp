@@ -3,25 +3,31 @@
         <a class="list-group-item">
             <span>MENÚ</span>
         </a>
-        <a routerLink="/HistoricAccount" [routerLinkActive]="['router-link-active']" class="list-group-item-menu" (click)="addExpandClass('pages')" [hidden]="isHidden('historico_usuario')">
+        <a routerLink="/HistoricAccountComponent" [routerLinkActive]="['router-link-active']" class="list-group-item-menu" [hidden]="isHidden('historico_usuario')">
             <i class="fa fa-fw fa-desktop"></i>&nbsp;
             <span>Clientes</span>
             <!--<span>Cuentas</span>-->
         </a>
-        <a [routerLink]="['/Login']" [routerLinkActive]="['router-link-active']" class="list-group-item-menu" [hidden]="isHidden('historico_cuentas')">
+        <a [routerLink]="['/Report']" [routerLinkActive]="['router-link-active']" class="list-group-item-menu" [hidden]="isHidden('reportes')">
             <i class="fa fa-fw fa-desktop"></i>&nbsp;
-            <span>Cuentas</span>
-            <!--<span>Usuarios</span>-->
-        </a>
-        <a [routerLink]="['/Reportes']" [routerLinkActive]="['router-link-active']" class="list-group-item-menu" [hidden]="isHidden('reportes')">
-            <i class="fa fa-fw fa-desktop"></i>&nbsp;
-            <span>Reportes</span>
+            <span>Reporte</span>
             <!--<span>Usuarios</span>-->
         </a>
         <a routerLink="/HistoricProduct/{{idUser}}" [routerLinkActive]="['router-link-active']" class="list-group-item-menu" [hidden]="isHidden('registrar_producto')">
             <i class="fa fa-fw fa-desktop"></i>&nbsp;
-            <span>Productos</span>
+            <span>Mis Productos</span>
             <!--<span>Usuarios</span>-->
         </a>
+        <a routerLink="/NewAccountComponent/{{idUser}}" [routerLinkActive]="['router-link-active']" class="list-group-item-menu" [hidden]="isHidden('nuevo_usuario')">
+            <i class="fa fa-fw fa-desktop"></i>&nbsp;
+            <span>Mis Datos</span>
+            <!--<span>Usuarios</span>-->
+        </a>
+        <a (click)="logout()" class="list-group-item-logout"  [hidden]="isHidden('nuevo_usuario')" >
+            
+            <span>Cerrar Sesión</span>
+            <!--<span>Usuarios</span>-->
+        </a>
+
     </div>
 </nav>

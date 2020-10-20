@@ -5,6 +5,7 @@ import { HttpErrorHandler, HandleError } from './http-error-handler.service';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Session } from '../entities/Session';
 import { HistoricData } from '../entities/HistoricData';
+import { Report } from '../entities/Report';
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +46,13 @@ export class ProductService {
   public setUserId(userId){
     this.userId = userId;
   }
+
+  getReport(): Observable<Report[]> {
+    const url = this.session.apiUrl + 'core/report';
+    return this.http.get<Report[]>(url, { headers: this.session.getAuthHeaders()}).pipe(
+      
+      );
+  }
+
 
 }

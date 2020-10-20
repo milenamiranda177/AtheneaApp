@@ -37,8 +37,23 @@ $topnav-background-color: #222;
             background: $topnav-background-color;
             border: 0;
             width: 100px;
+            height: 50px;
             border-radius: 0;
             color: #999;
+            font-size: 18px;
+            text-decoration: none;
+            .fa {
+                margin-right: 10px;
+                margin-left: 20px;
+            }
+        }
+        a.list-group-item-logout {
+            background: #999;
+            border: 0;
+            margin-top: 10px;
+            width: 235px;
+            border-radius: 0;
+            color: #222;
             font-size: 18px;
             text-decoration: none;
             .fa {

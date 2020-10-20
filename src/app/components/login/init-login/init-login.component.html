@@ -9,33 +9,27 @@
 <section class="section-content">
 
   <form [formGroup]="sessionForm"> <!-- Datos personales -->
-  <div class="input-group mb-3">
-      <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon3">Tipo Documento</span>
-        </div>              
+  <div class="input-group mb-3">            
                <select required class="form-control" formControlName="form_tipo" id="tipo_documento" name="tipo_documento" [(ngModel)]="tipo" pInputText>
-                
+                 <option  value='null' selected>Seleccione</option>
                   <option *ngFor="let ti of tipos" value="{{ti.value}}">{{ti.label}} </option>
                 </select> 
    </div>
   <div class="input-group mb-3">
-      <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon3">Identificacion</span>
-        </div>
       <input type="text" required class="form-control" formControlName="form_identificacion" placeholder="Identificacion" aria-label="Identificacion" [(ngModel)]="identificacion">
   </div>
 
   <div class="input-group mb-3">
-      <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon3">Contraseña</span>
-        </div>
-                <input type="password" placeholder="password" required class="form-control" maxlength="20" formControlName="form_password" id="password" name="password" [(ngModel)]="password" pInputText>
+      <input type="password" placeholder="password" required class="form-control" maxlength="20" formControlName="form_password" id="password" name="password" [(ngModel)]="password" pInputText>
   </div>
 
   <div class="input-group mb-3">
-      <button pButton type="button" class="btn" style="margin-top: 25px" label="Iniciar Sesión" (click)="onSubmit()" [disabled]="!sessionForm.valid" ></button>
-     
+      <button pButton type="button" class="btn" style="margin-top: 25px" label="Iniciar Sesión" (click)="onSubmit()" [disabled]="!sessionForm.valid" ></button>  
   </div>
+  <div class="input-group mb-3">
+    <button pButton type="button" class="nav-link active" class="btn" style="margin-top: 25px" routerLink="/NewAccountComponent" label="Registrarse" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"></button>
+     
+</div>
 
                 
   </form>

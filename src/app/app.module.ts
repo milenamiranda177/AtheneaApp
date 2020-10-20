@@ -31,7 +31,6 @@ import {CalendarModule} from 'primeng/calendar';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {TableModule} from 'primeng/table';
-import {MenuItem} from 'primeng/api';
 import {GMapModule} from 'primeng/gmap';
 import {SplitButtonModule} from 'primeng/splitbutton';
 import {ToastModule} from 'primeng/toast';
@@ -48,8 +47,10 @@ import { InitLogin } from './components/login/init-login/init-login.component';
 import { HistoricProduct } from './components/product/historic-product/historic-product.component';
 import { AdminProduct } from './components/product/admin-product/admin-product.component';
 import { TipoProduct } from './components/product/tipo-product/tipo-product.component';
-import { AdminAccountComponent } from './components/account/admin-account/admin-account.component';
+import { NewAccountComponent } from './components/account/admin-account/new-account/new-account.component';
 import { HistoricAccountComponent } from './components/account/historic-account/historic-account.component';
+import { Report } from './components/report/report.component';
+
 
 
 @NgModule({
@@ -60,7 +61,10 @@ import { HistoricAccountComponent } from './components/account/historic-account/
     InitLogin,
     HistoricProduct,
     AdminProduct,
-    TipoProduct
+    TipoProduct,
+    NewAccountComponent,
+    HistoricAccountComponent,
+    Report
   ],
   imports: [
     BrowserModule,
